@@ -20,5 +20,19 @@ class Bus
     @passengers << passenger
   end
 
+  #def add_many_passengers(passengers)
+  #  for passenger in passengers
+  #    add_passenger(passenger)
+  #  end
+  #end
+
+# we've got an array so we can call .index(passenger) to access a whole passenger inside the array
+# use .slice! to permantently remove the passenger from the array.
+
+  def drop_off_passenger(passenger)
+    index = @passengers.index(passenger)
+    @passenger.slice!(index, 1)
+  end
+
 
 end

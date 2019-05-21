@@ -8,6 +8,8 @@ class BusTest < MiniTest::Test
 
   def setup
     @person_1 = Person.new("Simon", "23")
+    @person_2 = Person.new("Steve", "32")
+    @person_3 = Person.new("Steph", "25")
     @bus = Bus.new("10", "Bonaly" )
   end
 
@@ -28,9 +30,20 @@ class BusTest < MiniTest::Test
   end
 
   def test_add_passenger
-    actual = @person_1.add_passenger()
-    p actual
-    assert_equal(1, @bus.passengers(actual))
+    @bus.add_passenger(@person_1)
+    assert_equal(1, @bus.passengers())
   end
 
+  def test_add_passenger__3_passengers
+    @bus.add_passenger(@person_1)
+    @bus.add_passenger(@person_2)
+    @bus.add_passenger(@person_3)
+    assert_equal(3, @bus.passengers())
+  end
+
+  def test_drop_off_passenger
+    @bus.add_passenger(@person_1)
+    @bus.drop_off_passenger(@person_1)
+    assert_equal(0, @bus.passengers())
+  end
 end
