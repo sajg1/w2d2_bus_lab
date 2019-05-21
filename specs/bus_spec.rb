@@ -28,7 +28,9 @@ class BusTest < MiniTest::Test
   end
 
   def test_add_passenger
-    assert_equal(1, @bus.passengers())
+    actual = @person_1.add_passenger()
+    p actual
+    assert_equal(1, @bus.passengers(actual))
   end
 
 end
